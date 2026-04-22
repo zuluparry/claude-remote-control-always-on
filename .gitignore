@@ -1,0 +1,23 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Local installer output (from running ./install.sh locally for testing)
+*.installed
+*.local
+tmp/
+logs/
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+
+# Test artefacts
+test-output/

@@ -1,0 +1,33 @@
+#!/bin/bash
+# Command Centre wrapper : starts claude remote-control inside a detached tmux session.
+# tmux provides the pseudo-TTY that claude remote-control needs under launchd.
+# Monitors the tmux session ; exits non-zero if it dies so launchd respawns.
+
+set -u
+LOG="__LOG_DIR__/command-centre-wrapper.log"
+echo "=== $(date) starting ===" >> "$LOG"
+
+cd "__WORK_DIR__" || { echo "cd failed: __WORK_DIR__ not accessible" >> "$LOG"; exit 1; }
+
+TMUX="__TMUX_BIN__"
+SESSION="command-centre"
+
+# If session already exists (fast restart case), keep wrapper alive but don't re-spawn
+if "$TMUX" has-session -t "$SESSION" 2>/dev/null; then
+    echo "tmux session $SESSION already exists, keeping wrapper alive" >> "$LOG"
+    sleep infinity
+fi
+
+# Start claude inside a detached tmux session
+CLAUDE_LOG="__LOG_DIR__/command-centre.tmux.log"
+"$TMUX" new-session -d -s "$SESSION" -c "__WORK_DIR__" \
+    "__CLAUDE_BIN__ remote-control --name '__SESSION_NAME__' 2>&1 | tee -a '$CLAUDE_LOG'"
+
+echo "tmux session started" >> "$LOG"
+
+# Monitor : if the tmux session dies, exit non-zero so launchd respawns the wrapper
+while "$TMUX" has-session -t "$SESSION" 2>/dev/null; do
+    sleep 15
+done
+echo "=== $(date) tmux session died, exiting for launchd respawn ===" >> "$LOG"
+exit 1
