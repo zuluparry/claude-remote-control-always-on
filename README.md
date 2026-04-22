@@ -4,13 +4,17 @@ Run [Claude Code](https://docs.claude.com/en/docs/claude-code)'s `claude remote-
 
 ![status](https://img.shields.io/badge/platform-macOS-blue) ![license](https://img.shields.io/badge/license-MIT-green) ![claude--code](https://img.shields.io/badge/claude--code-2.1.114%2B-orange)
 
-<!-- Screenshots (add your own to screenshots/ and uncomment):
 <p align="center">
-    <img src="screenshots/phone-code-tab.png" width="280" alt="Phone's Claude app Code tab showing the Command Centre session"/>
+    <img src="screenshots/phone-code-tab.jpg" width="260" alt="Claude iOS app Code tab showing persistent Command Centre plus spawned sub-sessions"/>
     &nbsp;&nbsp;
-    <img src="screenshots/phone-chat.png" width="280" alt="Example conversation with Command Centre from phone"/>
+    <img src="screenshots/phone-spawn-session.jpg" width="260" alt="Spawning a new session with /spawn-session from Command Centre on the phone"/>
+    &nbsp;&nbsp;
+    <img src="screenshots/phone-chat-reply.jpg" width="260" alt="Tapping into the spawned session and getting a reply"/>
 </p>
--->
+
+<p align="center">
+    <em>Left: the Code tab lists your always-on Command Centre plus any sessions you spawned. Middle: typing <code>/spawn-session</code> inside Command Centre creates a new ephemeral session on the Mac, tmux session and env URL returned. Right: tap the new session, say hi, get a reply — full round-trip from phone through LaunchAgent + tmux + claude + Anthropic and back.</em>
+</p>
 
 
 ## What this solves
