@@ -4,6 +4,15 @@ Run [Claude Code](https://docs.claude.com/en/docs/claude-code)'s `claude remote-
 
 ![status](https://img.shields.io/badge/platform-macOS-blue) ![license](https://img.shields.io/badge/license-MIT-green) ![claude--code](https://img.shields.io/badge/claude--code-2.1.114%2B-orange)
 
+<!-- Screenshots (add your own to screenshots/ and uncomment):
+<p align="center">
+    <img src="screenshots/phone-code-tab.png" width="280" alt="Phone's Claude app Code tab showing the Command Centre session"/>
+    &nbsp;&nbsp;
+    <img src="screenshots/phone-chat.png" width="280" alt="Example conversation with Command Centre from phone"/>
+</p>
+-->
+
+
 ## What this solves
 
 `claude remote-control --name "X"` exposes a local Claude Code session to the Claude iOS app's Code tab (the "Remote control" sessions on your phone). It works great in an interactive terminal, but the moment you close the terminal the session dies. The phone loses access. You have to walk back to the Mac and type the command again.
